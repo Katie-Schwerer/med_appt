@@ -1,0 +1,32 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+select, input {
+    width: 10%;
+}
+
+label {
+    font-weight: bold;
+}
+
+a {
+    font-weight: bold;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    font-size: medium;
+    color: white;
+    border: none;
+}
+
+button[type="submit"] {
+    background-color: #0099ffbe;
+}
+
+button[type="reset"] {
+    background-color: red;
+}

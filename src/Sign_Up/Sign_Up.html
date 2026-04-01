@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Following code has been commented with appropriate comments for your reference. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Sign_Up.css"> <!-- Linking external CSS file -->
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <p>Already a member? <a href="#">Login</a></p>
+    <form>
+        <label for="role">Role:</label>
+    <select id="role" name="role">
+        <option>Pick A Role</option>
+        <option value="doctor">Doctor</option>
+        <option value="patient">Patient</option>
+    </select>
+</br>
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="name" placeholder="Enter your name" />
+    <br />
+    <label for="phone">Phone:</label>
+    <input id="phone" type="phone" name="phone" placeholder="Enter your phone number" />
+    <br />
+    <label for="email">Email:</label>
+    <input id="email" type="email" name="email" placeholder="Enter your email" />
+    <br />
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" placeholder="Enter your password" />
+    <br />
+    <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+    </form>
+</body>
+</html>
