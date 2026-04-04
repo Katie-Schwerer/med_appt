@@ -7,8 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Import custom Navbar component
 import Navbar from './Components/Navbar/Navbar';
 import Landing_Page from './Components/Landing_Page/Landing_Page';
-import Login from '.Components/Login/Login';
-import Login from '.Components/Sign_Up/Sign_Up';
+import Login from './Components/Login/Login';
+import SignUp from './Components/Sign_Up/Sign_Up';
 
 // Function component for the main App
 function App() {
