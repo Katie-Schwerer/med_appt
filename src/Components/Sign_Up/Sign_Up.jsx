@@ -10,6 +10,7 @@ const Sign_Up = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [role, setRole] = useState('');
     const [password, setPassword] = useState('');
     const [showerr, setShowerr] = useState(''); // State to show error messages
     const navigate = useNavigate(); // Navigation hook from react-router
@@ -29,6 +30,7 @@ const Sign_Up = () => {
                 email: email,
                 password: password,
                 phone: phone,
+                role: role,
             }),
         });
 
@@ -40,6 +42,7 @@ const Sign_Up = () => {
             sessionStorage.setItem("name", name);
             sessionStorage.setItem("phone", phone);
             sessionStorage.setItem("email", email);
+            sessionStorage.setItem("role", role)
 
             // Redirect user to home page
             navigate("/");
@@ -57,16 +60,27 @@ const Sign_Up = () => {
 
     // JSX to render the Sign Up form
     return (
-        <div className="container" style={{marginTop:'5%'}}>
+        <div className="container" style={{ marginTop: '5%' }}>
             <div className="signup-grid">
                 <div className="signup-form">
                     <form method="POST" onSubmit={register}>
                         <div className="form-group">
+                            <label htmlFor="role">Role</label>
+                            <select id="role" name="role" onChange={setRole(e.target.value)}>
+                                <option disabled>Pick A Role</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="patient">Patient</option>
+                            </select>
+                            <label htmlFor="name">Name</label>
+                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
                             <label htmlFor="email">Email</label>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                            <label htmlFor="phone">Phone</label>
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="phone" name="phone" id="phone" className="form-control" placeholder="Enter your phone" aria-describedby="helpId" />
+                            <label htmlFor="password">Password</label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
                             {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                         </div>
-                        {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
                     </form>
                 </div>
             </div>
