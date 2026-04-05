@@ -3,16 +3,30 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
 }
 
-.right-side {
+.nav__logo {
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+}
+
+.nav__links {
     display: flex;
     flex-direction: row;
+    align-items: baseline;
 }
 
-.links a, .buttons button{
+.link{
     margin: 0 2.25rem;
+}
+
+.link a {
+    font-weight: normal;
+}
+
+.active, .active:hover {
+    font-weight: 200;
+    text-decoration: underline;
 }
 
 .buttons button {
