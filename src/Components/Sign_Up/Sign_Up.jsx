@@ -81,6 +81,10 @@ const Sign_Up = () => {
                             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
                             {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                         </div>
+                        <div class="buttons">
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                        </div>
                     </form>
                 </div>
             </div>
