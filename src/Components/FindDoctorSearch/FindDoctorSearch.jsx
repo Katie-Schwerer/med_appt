@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './FindDoctorSearchIC.css';
+import './FindDoctorSearch.css';
 import { useNavigate, Navigate } from 'react-router-dom';
 import search from './search.png'
 import medical from './medical.jpg'
@@ -17,7 +17,7 @@ const FindDoctorSearch = () => {
     const handleDoctorSelect = (speciality) => {
         setSearchDoctor(speciality);
         setDoctorResultHidden(true);
-        navigate(`/instant-consultation?speciality=${speciality}`);
+        navigate(`/booking-consultation?speciality=${speciality}`);
         window.location.reload();
     }
     return (

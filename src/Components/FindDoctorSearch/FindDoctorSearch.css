@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.findIcon {
+    width: 25px;
+    margin-top: .35rem;
+}
+
 .location-search-box {
     display: flex;
     align-items: center;

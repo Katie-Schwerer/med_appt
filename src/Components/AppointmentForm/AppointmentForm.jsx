@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './AppointmentForm.css';
 
 const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [name, setName] = useState('');
@@ -52,7 +53,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
         <div className="form-group">
           <label htmlFor="timeSlot">Book Time Slot:</label>
           <select id="timeSlot" name="timeSlot" value={selectedSlot} onChange={(e) => handleSlotSelection(e.target.value)} required>
-            <option disabled>Select a time slot</option>
+            <option>Select a time slot</option>
             <option value="nineam">9:00 AM</option>
             <option value="tenam">10:00 AM</option>
             <option value="onepm">1:00 PM</option>
