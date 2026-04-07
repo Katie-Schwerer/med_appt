@@ -10,6 +10,7 @@ import Landing_Page from './Components/Landing_Page/Landing_Page';
 import Login from './Components/Login/Login';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import BookingConsultation from './Components/BookingConsultation';
+import Notification from './Components/Notification/Notification';
 
 // Function component for the main App
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/booking-consultation" element={<BookingConsultation />} />
+            <Route path="/notification" element={<Notification />} />
           </Routes>
         </BrowserRouter>
     </div>

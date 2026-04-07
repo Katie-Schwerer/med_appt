@@ -10,7 +10,6 @@ const Sign_Up = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [role, setRole] = useState('');
     const [password, setPassword] = useState('');
     const [showerr, setShowerr] = useState(''); // State to show error messages
     const navigate = useNavigate(); // Navigation hook from react-router
@@ -30,7 +29,6 @@ const Sign_Up = () => {
                 email: email,
                 password: password,
                 phone: phone,
-                role: role,
             }),
         });
 
@@ -42,7 +40,6 @@ const Sign_Up = () => {
             sessionStorage.setItem("name", name);
             sessionStorage.setItem("phone", phone);
             sessionStorage.setItem("email", email);
-            sessionStorage.setItem("role", role)
 
             // Redirect user to home page
             navigate("/");
@@ -65,12 +62,6 @@ const Sign_Up = () => {
                 <div className="signup-form">
                     <form method="POST" onSubmit={register}>
                         <div className="form-group">
-                            <label htmlFor="role">Role</label>
-                            <select id="role" name="role" onChange={setRole(e.target.value)}>
-                                <option disabled>Pick A Role</option>
-                                <option value="doctor">Doctor</option>
-                                <option value="patient">Patient</option>
-                            </select>
                             <label htmlFor="name">Name</label>
                             <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
                             <label htmlFor="email">Email</label>
