@@ -1,6 +1,7 @@
 // Following code has been commented with appropriate comments for your reference.
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
+import './Notification.css'
 
 // Function component Notification to display user notifications
 const Notification = ({ children }) => {
@@ -14,11 +15,8 @@ const Notification = ({ children }) => {
   useEffect(() => {
     // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
     const storedUsername = sessionStorage.getItem('email');
-    console.log(storedUsername);
     const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    console.log(storedDoctorData);
-    const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
-    console.log(storedAppointmentData);
+    const storedAppointmentData = JSON.parse(localStorage.getItem('appointmentData'))
 
     // Set isLoggedIn state to true and update username if storedUsername exists
     if (storedUsername) {
@@ -31,10 +29,11 @@ const Notification = ({ children }) => {
       setDoctorData(storedDoctorData);
     }
 
-    // Set appointmentData state if storedAppointmentData exists
-    if (storedAppointmentData) {
-      setAppointmentData(storedAppointmentData);
+    if (setAppointmentData) {
+        setAppointmentData(storedAppointmentData);
     }
+
+    // Set appointmentData state if storedAppointmentData exists
   }, []); // Empty dependency array ensures useEffect runs only once after initial render
 
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
@@ -53,7 +52,12 @@ const Notification = ({ children }) => {
               <h3 className="appointment-card__title">Appointment Details</h3>
               <p className="appointment-card__message">
                 {/* Display doctor's name from doctorData */}
-                <strong>Doctor:</strong> {doctorData?.name}
+                <strong>Doctor:</strong> {doctorData.name}<br />
+                <strong>Speciality:</strong> {doctorData.speciality}<br />
+                <strong>Name:</strong> {appointmentData.name}<br />
+                <strong>Phone Number:</strong> {appointmentData.phone}<br />
+                <strong>Date of Appointment:</strong> {appointmentData.date}<br />
+                <strong>Time Slot:</strong> {appointmentData.time === "nineam" ? "9:00 AM" : appointmentData.time === "tenam" ? "10:00 AM" : appointmentData.time === "onepm" ? "1:00 PM" : "2:00 PM"}
               </p>
             </div>
           </div>
