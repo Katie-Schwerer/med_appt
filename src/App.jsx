@@ -11,6 +11,7 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import BookingConsultation from './Components/BookingConsultation';
 import Notification from './Components/Notification/Notification';
+import ReviewForm from './Components/ReviewForm/ReviewForm'
 
 // Function component for the main App
 function App() {
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
+                        <Route path="/reviews" element={<ReviewForm />} />
                     </Routes>
                 </Notification>
             </BrowserRouter>
