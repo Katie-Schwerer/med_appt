@@ -65,6 +65,12 @@ const Navbar = () => {
                 </li>
                 {isLoggedIn ? (
                     <>
+                        <div className="dropdown">
+                            <button class="dropbtn">Welcome, {username}</button>
+                            <div class="dropdown-content">
+                                <Link to="/profile">Your Profile</Link>
+                            </div>
+                        </div>
                         <li className="link">
                             <button className="btn2" onClick={handleLogout}>
                                 Logout
