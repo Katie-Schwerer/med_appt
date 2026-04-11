@@ -6,15 +6,21 @@ let doctor = [{ 'serial_number': 1, 'name': 'Dr. John Doe', 'speciality': 'Cardi
 
 function ReviewForm() {
     const [showModal, setShowModal] = useState(false);
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [disabledDoctors, setDisabledDoctors] = useState({});
+    const [selectedDoctor, setSelectedDoctor] = useState(null);
 
-    const handleOpenModal = () => {
+    const handleOpenModal = (doc) => {
+        setSelectedDoctor(doc);
         setShowModal(true);
     };
 
     const handleReviewComplete = () => {
         setShowModal(false);
-        setIsButtonDisabled(true);
+
+        setDisabledDoctors(prev => ({
+            ...prev,
+            [selectedDoctor.serial_number]: true
+        }));
     };
 
     return (
@@ -34,7 +40,10 @@ function ReviewForm() {
                         <td>{doc.name}</td>
                         <td>{doc.speciality}</td>
                         <td>
-                            <button onClick={handleOpenModal} disabled={isButtonDisabled}>
+                            <button
+                                onClick={() => handleOpenModal(doc)}
+                                disabled={disabledDoctors[doc.serial_number]}
+                            >
                                 Click Here
                             </button>
                         </td>
@@ -43,10 +52,10 @@ function ReviewForm() {
                 </table>
             </div>
             {showModal && (
-                    <div className="modal">
-                        <GiveReviews onComplete={handleReviewComplete} />
-                    </div>
-                )}
+                <div className="modal">
+                    <GiveReviews onComplete={handleReviewComplete} />
+                </div>
+            )}
         </div>
     );
 }

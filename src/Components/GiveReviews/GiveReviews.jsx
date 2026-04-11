@@ -12,6 +12,7 @@ function GiveReviews({ onComplete }) {
         review: '',
         rating: 0
     });
+    const [errors, setErrors] = useState({});
 
     // Function to handle button click event
     const handleButtonClick = () => {
@@ -20,26 +21,53 @@ function GiveReviews({ onComplete }) {
 
     // Function to handle form input changes
     const handleChange = (e) => {
-        // Update the form data based on user input
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        setFormData({
+            ...formData,
+            [name]: name === "rating" ? Number(value) : value
+        });
     };
 
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const validationErrors = validate();
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        setErrors({});
         setSubmittedMessage(formData);
+
         onComplete(formData);
+
         setFormData({
             name: '',
             review: '',
-            rating: 0
+            rating: 1
         });
-        // Check if all required fields are filled before submission
-        if (formData.name && formData.review && formData.rating > 0) {
-            setShowWarning(false);
-        } else {
-            setShowWarning(true);
+    };
+
+    const validate = () => {
+        let newErrors = {};
+
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
         }
+
+        if (!formData.review.trim()) {
+            newErrors.review = "Review is required";
+        }
+
+        if (!formData.rating || formData.rating <= 0) {
+            newErrors.rating = "Please select a rating";
+        }
+
+        return newErrors;
     };
 
     return (
@@ -55,20 +83,29 @@ function GiveReviews({ onComplete }) {
                     {/* Display warning message if not all fields are filled */}
                     {showWarning && <p className="warning">Please fill out all fields.</p>}
                     <div>
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
+                        {errors.name && <p className="error">{errors.name}</p>}
+                    </div>
+
+                    <div>
+                        <label>Review:</label>
+                        <textarea
+                            name="review"
+                            value={formData.review}
+                            onChange={handleChange}
+                        />
+                        {errors.review && <p className="error">{errors.review}</p>}
                     </div>
                     <div>
-                        <label htmlFor="review">Review:</label>
-                        <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
+                        <input type="ranger" min="1" max="5" step="1" value={formData.rating} onChange={handleChange} />
+                        {errors.rating && <p className="error">{errors.rating}</p>}
                     </div>
-                    <fieldset class="rating">
-                        <input type="radio" id="star5" name="rating" value="5" onChange={handleChange} /><label htmlFor="star5">★</label>
-                        <input type="radio" id="star4" name="rating" value="4" onChange={handleChange} /><label htmlFor="star4">★</label>
-                        <input type="radio" id="star3" name="rating" value="3" onChange={handleChange} /><label htmlFor="star3">★</label>
-                        <input type="radio" id="star2" name="rating" value="2" onChange={handleChange} /><label htmlFor="star2">★</label>
-                        <input type="radio" id="star1" name="rating" value="1" onChange={handleChange} /><label for="star1">★</label>
-                    </fieldset>
                     {/* Submit button for form submission */}
                     <button type="submit">Submit</button>
                 </form>
@@ -76,8 +113,10 @@ function GiveReviews({ onComplete }) {
             {/* Display the submitted message if available */}
             {submittedMessage && (
                 <div>
-                    <h3>Submitted Message:</h3>
-                    <p>{submittedMessage}</p>
+                    <h3>Submitted:</h3>
+                    <p><strong>Name:</strong> {submittedMessage.name}</p>
+                    <p><strong>Review:</strong> {submittedMessage.review}</p>
+                    <p><strong>Rating:</strong> {submittedMessage.rating}</p>
                 </div>
             )}
         </div>
