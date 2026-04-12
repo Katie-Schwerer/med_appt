@@ -69,6 +69,7 @@ const Navbar = () => {
                             <button class="dropbtn">Welcome, {sessionStorage.getItem("name")}</button>
                             <div class="dropdown-content">
                                 <Link to="/profile">Your Profile</Link>
+                                <Link to="/report">Your Report</Link>
                             </div>
                         </div>
                         <li className="link">
