@@ -66,7 +66,7 @@ const Navbar = () => {
                 {isLoggedIn ? (
                     <>
                         <div className="dropdown">
-                            <button class="dropbtn">Welcome, {username}</button>
+                            <button class="dropbtn">Welcome, {sessionStorage.getItem("name")}</button>
                             <div class="dropdown-content">
                                 <Link to="/profile">Your Profile</Link>
                             </div>

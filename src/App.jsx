@@ -27,6 +27,7 @@ function App() {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
                         <Route path="/reviews" element={<ReviewForm />} />
+                        <Route path="/profile" element={<ProfileCard />} />
                     </Routes>
                 </Notification>
             </BrowserRouter>
