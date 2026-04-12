@@ -12,6 +12,7 @@ import SignUp from './Components/Sign_Up/Sign_Up';
 import BookingConsultation from './Components/BookingConsultation';
 import Notification from './Components/Notification/Notification';
 import ReviewForm from './Components/ReviewForm/ReviewForm'
+import ProfileCard from './Components/ProfileCard/ProfileCard';
 
 // Function component for the main App
 function App() {
